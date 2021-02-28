@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-const Header = () => {
-    return ( 
+const Header = ({mostrarCompletadas, cambiarMostrarCompletadas}) => {
+    return (
         <header className="header">
             <h1 className="header__Titulo">Lista de Tareas</h1>
-            <button className="header__boton">
-                No mostrar completadas
-                <FontAwesomeIcon icon={faEyeSlash} 
-                className="header__icono-boton"/>
+            <button 
+                className="header__boton" 
+                onClick={()=>cambiarMostrarCompletadas(!mostrarCompletadas)}>
+                {mostrarCompletadas ?
+                    <>
+                    No mostrar completadas
+                    <FontAwesomeIcon icon={faEyeSlash}
+                    className="header__icono-boton" />
+                    </>
+                    :
+                    <>
+                    Mostrar completadas
+                    <FontAwesomeIcon icon={faEye}
+                    className="header__icono-boton" />
+                    </>
+                }
+
             </button>
         </header>
-     );
+    );
 }
- 
+
 export default Header;

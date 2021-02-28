@@ -22,11 +22,11 @@ const FormularioTareas = ({tareas, cambiarTareas}) => {
                             }
                         ]
                     );
+        cambiarInputTarea("");
     }
-    console.log(tareas);
     
     return ( 
-        <form action="" className="formulario-tareas" onSubmit={handleSubmit}>
+        <form action="" className="formulario-tareas" onSubmit={handleSubmit} >
             <input 
                 type="text" 
                 className="formulario-tareas__input"
