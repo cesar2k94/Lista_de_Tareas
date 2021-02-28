@@ -16,9 +16,9 @@ const Tarea = ({ tarea, actualizarEstadoTarea}) => {
     return (
         <li className="lista-tareas__tarea">     
                     <FontAwesomeIcon
-                        icon={tarea.completada? faSquare : faCheckSquare}
+                        icon={tarea.completada? faCheckSquare : faSquare}
                         className="lista-tareas__icono lista-tareas__icono-check"
-                        onClick={()=>actualizarEstadoTarea(tarea.id)}
+                        onClick={()=>actualizarEstadoTarea(tarea.id, tarea.texto)}
                     />
 
             <div className="lista-tareas__texto">
@@ -27,8 +27,8 @@ const Tarea = ({ tarea, actualizarEstadoTarea}) => {
                         <input
                             type="text"
                             className="formulario-editar-tarea__input"
-                            value={nuevaTarea}
-                            onChange={(e) => cambiarNuevaTarea(e.target.value, tarea.texto = e.target.value)}
+                            value={tarea.texto}
+                            onChange={(e) => actualizarEstadoTarea(tarea.id, e.target.value)}
                         />
                         <button
                             type="submit"

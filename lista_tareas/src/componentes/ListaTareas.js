@@ -2,10 +2,10 @@ import React from 'react';
 import Tarea from './Tarea';
 
 const ListaTareas = ({tareas, cambiarTareas}) => {
-    const actualizarEstadoTarea=(id)=>{
+    const actualizarEstadoTarea=(id, tareaTexto)=>{
         cambiarTareas(tareas.map((tarea)=>{
             if (tarea.id===id) {
-                return{...tarea, completada:!tarea.completada};
+                return{...tarea, completada:!tarea.completada, texto:tareaTexto};
             } else {
                 return tarea;
             }
