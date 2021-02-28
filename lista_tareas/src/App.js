@@ -10,7 +10,7 @@ const { v4: uuidv4 } = require('uuid');
 const App = () => {
     const [tareas, cambiarTareas]= useState(
         [
-           /* {
+            {
                 id:uuidv4(),
                 texto: "Lavar",
                 completada: false
@@ -19,7 +19,7 @@ const App = () => {
                 id:uuidv4(),
                 texto: "Fregar",
                 completada: false
-            }*/
+            }
         ]
     );
     return (    
