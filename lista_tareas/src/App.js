@@ -18,7 +18,7 @@ const App = () => {
             {
                 id:uuidv4(),
                 texto: "Fregar",
-                completada: false
+                completada: true
             }
         ]
     );

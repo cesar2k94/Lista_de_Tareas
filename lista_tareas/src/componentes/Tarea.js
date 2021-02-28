@@ -1,30 +1,33 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckSquare, faEdit, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheckSquare, faEdit, faTimes, faSquare } from '@fortawesome/free-solid-svg-icons';
 
-const Tarea = ({ tarea }) => {
+const Tarea = ({ tarea}) => {
     const [editandoTarea, cambiareditandoTarea] = useState(false);
-    const [nuevaTarea, cambiarNuevaTarea]=useState(tarea.texto);
+    const [nuevaTarea, cambiarNuevaTarea] = useState(tarea.texto);
+    const [iconoCompletada, cambiarIcono] = useState(tarea.completada)
 
-    const handleSubmit=(e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault();
         cambiareditandoTarea(false);
     }
 
     return (
-        <li className="lista-tareas__tarea">
-            <FontAwesomeIcon
-                icon={faCheckSquare}
-                className="lista-tareas__icono lista-tareas__icono-check"
-            />
+        <li className="lista-tareas__tarea">     
+                    <FontAwesomeIcon
+                        icon={iconoCompletada? faSquare : faCheckSquare}
+                        className="lista-tareas__icono lista-tareas__icono-check"
+                        onClick={(e)=>cambiarIcono(!iconoCompletada,tarea.completada=!tarea.completada)}
+                    />
+
             <div className="lista-tareas__texto">
-                {editandoTarea?
+                {editandoTarea ?
                     <form action="" className="formulario-editar-tarea" onSubmit={handleSubmit}>
                         <input
                             type="text"
                             className="formulario-editar-tarea__input"
                             value={nuevaTarea}
-                            onChange={(e)=>cambiarNuevaTarea(e.target.value)}
+                            onChange={(e) => cambiarNuevaTarea(e.target.value, tarea.texto = e.target.value)}
                         />
                         <button
                             type="submit"
@@ -40,7 +43,7 @@ const Tarea = ({ tarea }) => {
                 <FontAwesomeIcon
                     icon={faEdit}
                     className="lista-tareas__icono lista-tareas__icono-accion"
-                    onClick={()=>cambiareditandoTarea(!editandoTarea)}
+                    onClick={() => cambiareditandoTarea(!editandoTarea)}
                 />
                 <FontAwesomeIcon
                     icon={faTimes}
@@ -49,7 +52,9 @@ const Tarea = ({ tarea }) => {
             </div>
 
         </li>
+        
     );
+    
 }
 
 export default Tarea;
