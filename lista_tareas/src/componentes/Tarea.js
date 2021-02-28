@@ -2,22 +2,23 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare, faEdit, faTimes, faSquare } from '@fortawesome/free-solid-svg-icons';
 
-const Tarea = ({ tarea}) => {
+const Tarea = ({ tarea, actualizarEstadoTarea}) => {
     const [editandoTarea, cambiareditandoTarea] = useState(false);
     const [nuevaTarea, cambiarNuevaTarea] = useState(tarea.texto);
-    const [iconoCompletada, cambiarIcono] = useState(tarea.completada)
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
         cambiareditandoTarea(false);
     }
 
+
     return (
         <li className="lista-tareas__tarea">     
                     <FontAwesomeIcon
-                        icon={iconoCompletada? faSquare : faCheckSquare}
+                        icon={tarea.completada? faSquare : faCheckSquare}
                         className="lista-tareas__icono lista-tareas__icono-check"
-                        onClick={(e)=>cambiarIcono(!iconoCompletada,tarea.completada=!tarea.completada)}
+                        onClick={()=>actualizarEstadoTarea(tarea.id)}
                     />
 
             <div className="lista-tareas__texto">
