@@ -34,8 +34,7 @@ const ListaTareas = ({ tareas, cambiarTareas, mostrarCompletadas }) => {
                         eliminarTarea={eliminarTarea}
                     />
                 }
-                return;
-
+                return [];
             })
                 : <div className="lista-tareas__mensaje">No hay tareas agregadas</div>
             }
